@@ -41,7 +41,7 @@ class AndroidWindow(
       WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
     } else {
       @Suppress("Deprecation")
-      WindowManager.LayoutParams.TYPE_TOAST
+      WindowManager.LayoutParams.TYPE_PHONE
     },
     if (focusable) 0 else WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
     PixelFormat.TRANSLUCENT
@@ -114,12 +114,6 @@ class AndroidWindow(
   fun close() {
     flutterView.detachFromFlutterEngine()
     windowManager.removeView(rootView)
-  }
-
-  fun updateLayout() {
-    @Suppress("Deprecation")
-    windowManager.defaultDisplay.getMetrics(metrics)
-    setPosition(layoutParams.x, layoutParams.y)
   }
 
   fun setLayout(width: Int, height: Int) {
