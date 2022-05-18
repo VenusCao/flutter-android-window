@@ -47,7 +47,7 @@ class MainApi(private val activity: Activity) : Pigeon.MainApi {
   }
 
   private fun canDrawOverlays(): Boolean {
-    return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       Settings.canDrawOverlays(activity)
     } else {
       true
@@ -56,7 +56,7 @@ class MainApi(private val activity: Activity) : Pigeon.MainApi {
 
   private fun requestPermission(callback: () -> Unit) {
     onActivityResultCallback = callback
-    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       val intent = Intent(
         Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
         Uri.parse("package:${activity.packageName}")
