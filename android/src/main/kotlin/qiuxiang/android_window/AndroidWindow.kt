@@ -115,6 +115,12 @@ class AndroidWindow(
     flutterView.detachFromFlutterEngine()
     windowManager.removeView(rootView)
   }
+  
+  fun updateLayout() {
+    @Suppress("Deprecation")
+    windowManager.defaultDisplay.getMetrics(metrics)
+    setPosition(layoutParams.x, layoutParams.y)
+  }
 
   fun setLayout(width: Int, height: Int) {
     layoutParams.width = width
